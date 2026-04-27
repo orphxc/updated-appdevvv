@@ -1,1 +1,205 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* =========================
+   🌐 BASE RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =========================
+   🌌 BACKGROUND
+========================= */
+body {
+  background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+  color: #fff;
+  padding: 20px;
+}
+
+/* =========================
+   📌 APP TITLE
+========================= */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00d4ff;
+}
+
+/* =========================
+   📐 MAIN LAYOUT
+========================= */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ⬅ LEFT PANEL */
+.left-panel {
+  flex: 1;
+  max-width: 450px;
+}
+
+/* ➡ RIGHT PANEL */
+.right-panel {
+  flex: 1;
+  max-width: 500px;
+}
+
+/* =========================
+   🧱 CARD STYLE (ALL COMPONENTS)
+========================= */
+app-timer,
+app-session-form,
+app-session-list,
+app-spotify-player,
+app-notes {
+  display: block;
+  background: #2f2f4f;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   ⏱ TIMER STYLES
+========================= */
+.timer-box {
+  text-align: center;
+}
+
+.timer-box h1 {
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+.start-session {
+  background: #00ff9f;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.start-session:hover {
+  background: #00c77a;
+}
+
+.controls button {
+  margin: 5px;
+}
+
+/* =========================
+   🔘 BUTTONS (GLOBAL)
+========================= */
+button {
+  background: #00d4ff;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #009ec3;
+  color: #fff;
+}
+
+/* ❌ DELETE BUTTON */
+.delete-btn {
+  background: #ff4d4d;
+}
+
+.delete-btn:hover {
+  background: #cc0000;
+}
+
+/* =========================
+   📝 INPUTS
+========================= */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* =========================
+   📋 SESSION LIST (ORIGINAL STYLE)
+========================= */
+.session-card {
+  background: #3a3a6a;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.session-card strong {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.session-card p {
+  margin: 0;
+  color: #dcdcdc;
+  font-size: 14px;
+}
+
+/* =========================
+   📝 NOTES SECTION
+========================= */
+textarea {
+  height: 250px;
+  resize: none;
+}
+
+.notes-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.saved-msg {
+  margin-top: 10px;
+  color: #00ff9f;
+}
+
+/* =========================
+   🎧 SPOTIFY
+========================= */
+iframe {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* =========================
+   📱 RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-panel,
+  .right-panel {
+    max-width: 90%;
+  }
+}

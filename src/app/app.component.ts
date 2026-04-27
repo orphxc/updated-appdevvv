@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { TimerComponent } from './components/timer.component';
+import { SessionFormComponent } from './components/session-form.component';
+import { SpotifyPlayerComponent } from './components/spotify-player.component';
+import { NotesComponent } from './components/notes/notes.component';
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    TimerComponent,
+    SessionFormComponent,
+    SpotifyPlayerComponent,
+    NotesComponent
+  ],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
-  title = 'study-tracker';
-}
+export class AppComponent {}
