@@ -1,4 +1,3 @@
-// models/Session.js
 const mongoose = require('mongoose');
 
 const SessionSchema = new mongoose.Schema({
@@ -8,4 +7,4 @@ const SessionSchema = new mongoose.Schema({
   notes: String
 });
 
-module.exports = mongoose.model('Session', SessionSchema);  
+module.exports = mongoose.model('Session', SessionSchema);
