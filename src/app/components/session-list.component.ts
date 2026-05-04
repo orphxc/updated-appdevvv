@@ -1,3 +1,4 @@
+// session-list.component.ts (Angular Frontend)
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/session.service';
 import { CommonModule } from '@angular/common';
@@ -9,24 +10,23 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
   template: `
     <h2>Study Sessions</h2>
-
     <div *ngFor="let s of sessions" class="session-card">
-      
+      <!-- VIEW MODE -->
       <div *ngIf="!s.isEditing">
         <strong>{{ s.subject }}</strong>
         <p>⏱ Duration: {{ s.duration }} mins</p>
-        <p> Notes: {{ s.notes }}</p>
-
+        <p>Notes: {{ s.notes }}</p>
         <div class="btn-group">
           <button (click)="startEdit(s)" class="btn-primary btn-sm">Edit</button>
           <button (click)="delete(s._id!)" class="btn-danger btn-sm">Delete</button>
         </div>
       </div>
 
+      <!-- EDIT MODE -->
       <div *ngIf="s.isEditing" style="display: flex; flex-direction: column; gap: 8px;">
         <input [(ngModel)]="s.subject" placeholder="Subject">
+        <input [(ngModel)]="s.duration" type="number" placeholder="Duration">
         <textarea [(ngModel)]="s.notes" placeholder="Notes" style="height: 80px;"></textarea>
-        
         <div class="btn-group">
           <button (click)="saveEdit(s)" class="btn-success">Save</button>
           <button (click)="s.isEditing = false" class="btn-secondary">Cancel</button>
@@ -37,12 +37,16 @@ import { FormsModule } from '@angular/forms';
 })
 export class SessionListComponent implements OnInit {
   sessions: any[] = [];
+
   constructor(private service: SessionService) {}
 
-  ngOnInit() { this.loadSessions(); }
+  ngOnInit() {
+    this.loadSessions();
+  }
 
   loadSessions() {
     this.service.getSessions().subscribe((data: any) => {
+      // Map is used to add the local UI state 'isEditing' to each object
       this.sessions = data.map((session: any) => ({ ...session, isEditing: false }));
     });
   }
@@ -53,10 +57,17 @@ export class SessionListComponent implements OnInit {
     }
   }
 
-  startEdit(session: any) { session.isEditing = true; }
+  startEdit(session: any) {
+    session.isEditing = true;
+  }
 
   saveEdit(session: any) {
-    const updatedData = { subject: session.subject, duration: session.duration, notes: session.notes };
+    const updatedData = { 
+      subject: session.subject, 
+      duration: session.duration, 
+      notes: session.notes 
+    };
+
     this.service.updateSession(session._id, updatedData).subscribe(() => {
       session.isEditing = false;
       this.loadSessions();
