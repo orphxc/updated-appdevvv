@@ -21,4 +21,9 @@ export class SessionService {
   deleteSession(id: string) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+
+  updateSession(id: string, session: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, session);
+  }
 }

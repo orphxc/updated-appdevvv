@@ -1,18 +1,22 @@
-<h1>📚 Study Session Tracker</h1>
+<h1 class="main-title">   Study Session Tracker</h1>
 
-<div class="main-layout">
+<div class="three-column-layout">
+  
 
-  <div class="left-panel">
-    <app-timer></app-timer>
+  <aside class="column side-col">
+    <app-timer [notesRef]="studyNotes"></app-timer>
     <app-spotify-player></app-spotify-player>
-  </div>
-
-<div class="right-panel">
-  <app-notes></app-notes>    
-  <app-session-list></app-session-list> 
-   <app-flashcards></app-flashcards>       
-</div>
+  </aside>
 
 
+  <main class="column workspace-col">
+    <app-notes #studyNotes></app-notes>
+    <app-flashcards></app-flashcards>
+  </main>
+
+  
+  <aside class="column side-col">
+    <app-session-list></app-session-list>
+  </aside>
 
 </div>

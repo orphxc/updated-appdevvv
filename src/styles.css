@@ -40,172 +40,264 @@ body::before {
 }
 
 /* =========================
-   📌 APP TITLE
+   📌 TYPOGRAPHY
 ========================= */
 h1 {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-weight: 500;
   letter-spacing: 0.5px;
-  font-size: 30px;
+  font-size: 28px;
   color: #ffffff;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+h2, h3 {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+  color: #e2e8f0;
+  margin-bottom: 16px;
+}
+
+p {
+  color: #a1a1aa;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* =========================
-   📐 MAIN LAYOUT
+   📐 LAYOUT
 ========================= */
 .main-layout {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
   align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .left-panel,
 .right-panel {
   flex: 1;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-panel {
+  flex: 1.5;
 }
 
 /* =========================
-   🧱 CARD TEMPLATE (MINIMAL)
+   🧱 CARD COMPONENT
 ========================= */
 app-timer,
 app-session-list,
 app-spotify-player,
 app-notes,
-app-flashcards {
+app-flashcards,
+.card-container {
   display: block;
-  background: rgba(20, 20, 40, 0.9);
+  background: rgba(20, 20, 40, 0.85);
   padding: 24px;
-  margin-bottom: 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* =========================
-   ⏱ TIMER (MINIMAL)
+   🔘 UNIFIED BUTTON SYSTEM
+========================= */
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+button:hover,
+.btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary action variant */
+.btn-primary {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+}
+
+.btn-primary:hover {
+  background: rgba(99, 102, 241, 0.3);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #c7d2fe;
+}
+
+/* Danger variant */
+.btn-danger,
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.btn-danger:hover,
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #fecaca;
+}
+
+/* Success variant */
+.btn-success {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.btn-success:hover {
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #bbf7d0;
+}
+
+/* Secondary / Cancel */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d4d4d8;
+}
+
+/* Small button modifier */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+  width: auto;
+}
+
+/* Button group */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-group button {
+  flex: 1;
+}
+
+/* =========================
+   📝 FORM INPUTS
+========================= */
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+textarea {
+  height: 200px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a1a1aa;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+/* =========================
+   ⏱ TIMER
 ========================= */
 .timer-box {
   text-align: center;
 }
 
 .timer-box h1 {
-  font-size: 42px;
-  margin: 12px 0;
+  font-size: 48px;
   font-weight: 300;
-  color: #ffffff;
+  letter-spacing: 2px;
+  margin: 16px 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-view .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.timer-view .controls button {
+  flex: 1 1 calc(50% - 5px);
+  max-width: 150px;
 }
 
 /* =========================
-   🔘 BUTTONS (UNIFIED STYLE)
-========================= */
-button,
-.clear-btn,
-.save-btn,
-.load-btn,
-[class*="btn"],
-.timer-box button {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 12px 20px;
-  margin: 4px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 400;
-  transition: all 0.2s ease;
-  width: 100%;
-  font-size: 14px;
-}
-
-button:hover,
-.clear-btn:hover,
-.save-btn:hover,
-.load-btn:hover,
-[class*="btn"]:hover,
-.timer-box button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Specific start-session style removed; unified with clear/save */
-.start-session,
-.timer-box .start,
-.timer-box .pause,
-.timer-box .stop-save,
-.timer-box .reset {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.start-session:hover,
-.timer-box .start:hover,
-.timer-box .pause:hover,
-.timer-box .stop-save:hover,
-.timer-box .reset:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* DELETE BUTTON */
-.delete-btn {
-  background: rgba(239, 68, 68, 0.2);
-  border-color: rgba(239, 68, 68, 0.4);
-}
-
-.delete-btn:hover {
-  background: rgba(239, 68, 68, 0.3);
-  border-color: rgba(239, 68, 68, 0.5);
-}
-
-/* =========================
-   📝 INPUTS
-========================= */
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  outline: none;
-  transition: border-color 0.2s ease;
-  color: #e2e8f0;
-  font-size: 15px;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-input:focus,
-textarea:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* =========================
-   📋 SESSION LIST (MINIMAL)
+   📋 SESSION LIST
 ========================= */
 .session-card {
   background: rgba(255, 255, 255, 0.03);
   padding: 16px;
   margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  transition: background 0.2s ease;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid rgba(99, 102, 241, 0.5);
+  transition: all 0.2s ease;
 }
 
 .session-card:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(99, 102, 241, 0.7);
 }
 
 .session-card strong {
@@ -215,52 +307,16 @@ textarea:focus {
 }
 
 .session-card p {
-  margin: 0;
-  color: #a1a1aa;
-  font-size: 14px;
-}
-
-/* =========================
-   📝 NOTES (MINIMAL)
-========================= */
-textarea {
-  height: 220px;
-  resize: none;
-}
-
-.notes-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.saved-msg {
-  margin-top: 10px;
-  color: #10b981;
-  font-size: 14px;
-}
-
-/* =========================
-   🎧 SPOTIFY (MINIMAL)
-========================= */
-iframe {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
 }
 
 /* =========================
    🧠 FLASHCARDS
 ========================= */
-app-flashcards {
-  display: block;
-}
-
 .flashcard-box h3 {
   color: #ffffff;
   font-weight: 400;
   margin-bottom: 16px;
-  font-size: 20px;
 }
 
 .card {
@@ -273,7 +329,7 @@ app-flashcards {
   width: 100%;
   height: 140px;
   text-align: center;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.5s ease;
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -291,55 +347,65 @@ app-flashcards {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 20px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
   line-height: 1.5;
 }
 
 .card-front {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: #e2e8f0;
 }
 
 .card-back {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(99, 102, 241, 0.1);
   color: #ffffff;
   transform: rotateY(180deg);
 }
 
-.card-inner:hover .card-front {
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.card-inner:hover .card-back {
-  background: rgba(255, 255, 255, 0.09);
-}
-
-.card input {
-  width: 90%;
-  font-size: 14px;
-}
-
-/* DELETE + EDIT BUTTONS */
-.delete-btn {
+.card .delete-btn,
+.card .edit-btn {
   position: absolute;
   bottom: 8px;
+  width: auto;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.card .delete-btn {
   left: 8px;
-  width: auto;
-  padding: 6px 10px;
-  font-size: 12px;
 }
 
-.edit-btn {
-  position: absolute;
-  bottom: 8px;
+.card .edit-btn {
   right: 8px;
-  width: auto;
-  padding: 6px 10px;
-  font-size: 12px;
+}
+
+/* =========================
+   🎧 SPOTIFY EMBED
+========================= */
+iframe {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   ✅ STATUS MESSAGES
+========================= */
+.saved-msg,
+.success-msg {
+  color: #86efac;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.error-msg {
+  color: #fca5a5;
+  font-size: 13px;
+  margin-top: 10px;
 }
 
 /* =========================
@@ -348,39 +414,114 @@ app-flashcards {
 @media (max-width: 768px) {
   .main-layout {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .left-panel,
   .right-panel {
-    max-width: 95%;
+    max-width: 100%;
   }
 
   .card-inner {
     height: 120px;
   }
 
-  .card-front,
-  .card-back {
-    padding: 16px;
-    font-size: 15px;
+  .timer-view .controls button {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  h1 {
+    font-size: 24px;
   }
 }
 
-/* =========================
-   🧾 HEADINGS UNIFIED
-========================= */
-app-timer h3,
-app-notes h3,
-app-session-list h3,
-app-flashcards h3,
-app-spotify-player h3 {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.4px;
-  color: #e2e8f0;
+
+:root {
+  --bg-main: #0a0a1a;
+  --card-bg: rgba(20, 20, 40, 0.85);
+  --accent: #6366f1; /* Indigo */
+  --accent-glow: rgba(99, 102, 241, 0.3);
+  --danger: rgba(239, 68, 68, 0.2);
+  --success: rgba(34, 197, 94, 0.2);
+  --text-main: #e2e8f0;
+  --text-dim: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+/* Global Card Refinement */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Professional Input Styling */
+.form-control {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+
+/* Layout Strategy */
+.three-column-layout {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 24px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  align-items: flex-start; /* Prevents cards from stretching vertically */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Side Columns: Timer (Left) & Sessions (Right) */
+.side-col {
+  flex: 1; 
+  min-width: 320px;
+}
+
+/* Middle Column: Notes & Flashcards */
+.workspace-col {
+  flex: 1.8; /* Given more horizontal room for typing/cards */
+  min-width: 450px;
+}
+
+/* Glassmorphism Consistency */
+app-timer, app-session-list, app-spotify-player, app-notes, app-flashcards {
+  display: block;
+  background: rgba(20, 20, 40, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Handling */
+@media (max-width: 1200px) {
+  .three-column-layout {
+    flex-wrap: wrap; /* Wraps columns if screen is too small */
+    justify-content: center;
+  }
+  .workspace-col {
+    flex: 1 1 100%; /* Middle takes full width on smaller screens */
+    order: -1; /* Moves active workspace to the top */
+  }
 }

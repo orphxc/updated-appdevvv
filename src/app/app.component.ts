@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
 import { TimerComponent } from './components/timer.component';
 import { SpotifyPlayerComponent } from './components/spotify-player.component';
 import { NotesComponent } from './components/notes/notes.component';
@@ -15,7 +13,7 @@ import { FlashcardsComponent } from './components/flashcards.component';
     SpotifyPlayerComponent,
     NotesComponent,
     SessionListComponent,
-     FlashcardsComponent
+    FlashcardsComponent
   ],
   templateUrl: './app.component.html'
 })

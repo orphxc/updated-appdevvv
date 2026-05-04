@@ -10,7 +10,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   template: `
     <div class="spotify-box">
 
-      <h3>🎧 Study Music</h3>
+      <h3>Study Music</h3>
 
       <input
         [(ngModel)]="playlistUrl"

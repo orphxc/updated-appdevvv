@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const SessionSchema = new mongoose.Schema({
-  subject: String,
-  duration: Number,
+  subject: { type: String, required: true }, 
+  duration: { type: Number, required: true }, 
   date: { type: Date, default: Date.now },
   notes: String
 });
+
 
 module.exports = mongoose.model('Session', SessionSchema);

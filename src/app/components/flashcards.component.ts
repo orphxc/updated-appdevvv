@@ -16,7 +16,7 @@ interface Flashcard {
   template: `
     <div class="flashcard-box">
 
-      <h3>🧠 Flashcards</h3>
+      <h3>Flashcards</h3>
 
       <!-- INPUTS -->
       <input [(ngModel)]="question" placeholder="Enter question">

@@ -7,42 +7,22 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   template: `
-    <h2>📝 Study Notes</h2>
-
-    <textarea 
-      [(ngModel)]="notes" 
-      placeholder="Write your notes while studying..."
-    ></textarea>
-
-    <div class="notes-actions">
-      <button (click)="clear()">Clear</button>
-      <button (click)="save()">Save</button>
+    <div class="notes-box" style="background: #1e1e2f; padding: 20px; border-radius: 15px; color: white;">
+      <h3>Study Notes </h3>
+      <textarea 
+        [(ngModel)]="content" 
+        placeholder="Type your detailed study notes here..."
+        style="width: 100%; height: 200px; border-radius: 8px; padding: 10px; background: #2f2f4f; color: white; border: 1px solid #444; font-family: inherit;">
+      </textarea>
     </div>
-
-    <p *ngIf="savedMessage" class="saved-msg">
-      ✔ Notes saved locally!
-    </p>
   `
 })
 export class NotesComponent {
+  content: string = '';
 
-  notes = '';
-  savedMessage = false;
-
-  ngOnInit() {
-    const saved = localStorage.getItem('study-notes');
-    if (saved) this.notes = saved;
-  }
-
-  save() {
-    localStorage.setItem('study-notes', this.notes);
-    this.savedMessage = true;
-
-    setTimeout(() => this.savedMessage = false, 2000);
-  }
-
-  clear() {
-    this.notes = '';
-    localStorage.removeItem('study-notes');
+  getAndClearNotes(): string {
+    const text = this.content;
+    this.content = ''; 
+    return text;
   }
 }
